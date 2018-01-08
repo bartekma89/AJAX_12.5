@@ -6,19 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Random quote</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
 	<header>
 		<h1>Random quote machine</h1>
 	</header>
-	<div>
-		<h2 class="quote"></h2>
-		<h3 class="author"></h3>
+	<div class="text">
+		<h2 class="text__quote"></h2>
+		<h3 class="text__author"></h3>
 	</div>
 	<div>
-		<button class="trigger">Random quote</button>
-		<a href="#" target="_blank" class="tweet"><i class="fa fa-lg fa-twitter">Twitter</i></a>
+		<button class="trigger app-btn app-btn--primary">Random quote</button>
+		<a type="button" href="#" target="_blank" class="tweet app-btn app-btn--primary"><i class="fa fa-lg fa-twitter app-btn__icon"></i>Tweet</a>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

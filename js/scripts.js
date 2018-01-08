@@ -8,42 +8,38 @@ $(function () {
 
 	function getQuote() {
 
-		var $quote = $('.quote');
-		var $author = $('.author');
+		var $quote = $('.text__quote');
+		var $author = $('.text__author');
 
 		var quoteUrl = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1";
 		var tweetLink = "https://twitter.com/intent/tweet?text=";
 
 		$.ajax({
-				type: "GET",
-				dataType: "json",
-				url: quoteUrl
-			})
-			.done(function (jqXHR) {
-				createTweet(jqXHR);
-			});
-
+			type: 'GET',
+			url: quoteUrl,
+			dataType: 'json'
+		}).done(function (jqXHR) {
+			createTweet(jqXHR);
+		});
 
 		function createTweet(response) {
-
 			var data = response[0];
 
 			var quoteText = $(data.content).text().trim();
-			var quoteAuthor = data.title;
+			var authorText = data.title;
 
-			if (!quoteAuthor.length) {
-				quoteAuthor = "Unkhnow author";
-			}
+			if (!authorText.length) authorText = "Unknow author";
 
-			var tweetText = "Quote of the day - " + quoteText + " Author: " + quoteAuthor;
+			var authorTweet = " Author: " + authorText;
+			var tweetText = "Quote of the day: " + quoteText + authorTweet;
 
 			if (tweetText.length > 140) {
 				getQuote();
 			} else {
 				var tweet = tweetLink + encodeURIComponent(tweetText);
-				$('.tweet').attr('href', tweet);
 				$quote.text(quoteText);
-				$author.text(quoteAuthor);
+				$author.text(authorTweet);
+				$('.tweet').attr('href', tweet);
 			}
 
 		}
