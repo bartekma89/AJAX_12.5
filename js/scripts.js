@@ -1,25 +1,28 @@
 $(function ($) {
 
 	getQuote();
-	
+
 	var $loader = $('#loader').hide();
-	
-	$(document).ajaxStart(function() {
-		$loader.show();
-	})
-		.ajaxStop(function() {
-		$loader.hide();
-	});
+
+	$(document).ajaxStart(function () {
+			if ($('.text h2').hasClass('text__quote')) {
+				$('.text__quote').remove();
+			}
+			if ($('.text h3').hasClass('text__author')) {
+				$('.text__author').remove();
+			}
+			$loader.show();
+		})
+		.ajaxStop(function () {
+			$loader.hide();
+		});
 
 	$('.trigger').click(function () {
-		getQuote();		
+		getQuote();
 		$('#loader__icon').addClass('loader');
 	});
 
 	function getQuote() {
-
-		var $quote = $('.text__quote');
-		var $author = $('.text__author');
 
 		var quoteUrl = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1";
 		var tweetLink = "https://twitter.com/intent/tweet?text=";
@@ -34,6 +37,9 @@ $(function ($) {
 
 		function createTweet(response) {
 			var data = response[0];
+
+			var $quote = $('<h2 class="text__quote"></h2>');
+			var $author = $('<h3 class="text__author"></h3>');
 
 			var quoteText = $(data.content).text().trim();
 			var authorText = data.title;
@@ -50,6 +56,7 @@ $(function ($) {
 				$quote.text(quoteText);
 				$author.text(authorTweet);
 				$('.tweet').attr('href', tweet);
+				$('.text').append($quote).append($author);
 			}
 
 		}
