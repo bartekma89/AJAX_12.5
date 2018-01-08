@@ -16,6 +16,7 @@ body {
 header {
 	display: block;
 	margin: 50px auto;
+	margin-bottom: 80px;
 }
 
 header h1 {
@@ -25,8 +26,8 @@ header h1 {
 
 .text {
 	font-size: 1.3rem;
-	margin: 100px auto;
-	height: 100px;
+	margin: 10px auto;
+	height: 200px;
 }
 
 .text__quote {
@@ -69,7 +70,7 @@ header h1 {
 }
 
 .loader {
-	margin: 0 auto;
+	margin: 50px auto;
 	border: 8px solid #fff;
 	border-top: 8px solid #56ACED;
 	border-radius: 50%;

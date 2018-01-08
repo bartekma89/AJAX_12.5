@@ -33,6 +33,10 @@ $(function ($) {
 			dataType: 'json'
 		}).done(function (jqXHR) {
 			createTweet(jqXHR);
+		}).fail(function() {
+			var errorInfo = "Sorry, we can't load quote";
+			$('#error').remove();
+			$('.text').append('<div id="error">' + errorInfo + '</div>');
 		});
 
 		function createTweet(response) {
