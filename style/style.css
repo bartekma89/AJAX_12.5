@@ -25,7 +25,7 @@ header h1 {
 
 .text {
 	font-size: 1.3rem;
-	margin: 150px auto;
+	margin: 100px auto;
 }
 
 .text__quote {
@@ -65,4 +65,19 @@ header h1 {
 .tweet {
 	display: block;
 	margin: 0 auto;
+}
+
+.loader {
+	margin: 0 auto;
+	border: 8px solid #fff;
+	border-top: 8px solid #56ACED;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
 }

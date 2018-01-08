@@ -1,9 +1,19 @@
-$(function () {
+$(function ($) {
 
 	getQuote();
+	
+	var $loader = $('#loader').hide();
+	
+	$(document).ajaxStart(function() {
+		$loader.show();
+	})
+		.ajaxStop(function() {
+		$loader.hide();
+	});
 
 	$('.trigger').click(function () {
-		getQuote();
+		getQuote();		
+		$('#loader__icon').addClass('loader');
 	});
 
 	function getQuote() {
@@ -45,4 +55,4 @@ $(function () {
 		}
 	}
 
-}());
+}(jQuery));
